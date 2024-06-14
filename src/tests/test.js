@@ -1,11 +1,11 @@
 /* eslint-disable no-undef */
-import { Character } from "../characters";
-import { Bowerman } from "../characters";
-import { Swordsman } from "../characters";
-import { Magician } from "../characters";
-import { Undead } from "../characters";
-import { Zombie } from "../characters";
-import { Daemon } from "../characters";
+import { Character } from "../class/characters";
+import { Bowerman } from "../class/bowerman";
+import { Swordsman } from "../class/swordsman";
+import { Magician } from "../class/magician";
+import { Undead } from "../class/undead";
+import { Zombie } from "../class/zombie";
+import { Daemon } from "../class/daemon";
 
 test('Создание персонажа', () => {
     const character = new Character('Лучник', 'Bowerman');
@@ -17,11 +17,16 @@ test('Создание персонажа', () => {
 
 test('Проверка имени', () => {
   const person = new Bowerman('Imya', 'Bowerman');
-  const result = person.validateName('Imya', 'Bowerman');
-  expect(result).toBe('Imya');
+  const correct = {
+    attack: 25,
+    defence: 25,
+    health: 100,
+    level: 1,
+    name: 'Imya',
+    type: 'Bowerman'
+  }
+  expect(person).toEqual(correct);
 });
-
-
 
 test('Создание Лучника', () => {
   const character = new Bowerman('Лучник', 'Bowerman');

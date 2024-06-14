@@ -1,31 +1,33 @@
 /* eslint-disable no-undef */
 
-import { Bowerman } from "../characters";
-import { Zombie } from "../characters";
+import { Character } from "../class/characters";
 
 
-test('Повышение уровня умершего', () => {
-    const person = new Zombie('Imya', 'Zombie');
-    person.health = 0;
-    person.levelUp();
-    expect(person.level).toThrowError()
-  })
-
-test('Неверная длина имени', () => {
-  const person = new Bowerman('TooLongName', 'Bowerman');
-  const result = person.validateName('TooLongName', 'Bowerman');
-  expect(result).toThrowError();
-});
+// test('Повышение уровня умершего', () => {
+//     const person = new Ch('Imya', 'Zombie');
+//     person.health = 0;
+//     person.levelUp();
+//     expect(person.level).toThrow(new Error('Нельзя повысить левел умершего'))
+//   })
 
 test('Неверный тип', () => {
-  const person = new Bowerman('Imya', 'Angel');
-  const result = person.validateName('Imya', 'Angel');
-  expect(result).toThrowError();
+    expect(() => new Character('Imya', 'Angel')).toThrow(new Error('Неверный тип персонажа'))
+  });
+  
+
+test('Неверная длина имени', () => {
+  expect(() => new Character('TooLongName', 'Zombie')).toThrow(new Error('Имя должно содержать от 2 до 10 символов'))
 });
 
 test('Нанесение урона', () => {
-    const person = new Zombie('Imya', 'Zombie');
+    const person = new Character('Imya', 'Zombie');
     person.health = -1;
-    person.damage(10);
-    expect(person.health).toThrowError()
-  })  
+  expect(() => person.damage(10)).toThrow(new Error('Нельзя убить умершего'))
+});
+
+test('Повышение уровня', () => {
+    const person = new Character('Imya', 'Zombie');
+    person.health = 0;
+  expect(() => person.levelUp()).toThrow(new Error('Нельзя повысить левел умершего'))
+});
+
