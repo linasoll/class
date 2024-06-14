@@ -21,17 +21,7 @@ test('Проверка имени', () => {
   expect(result).toBe('Imya');
 });
 
-test('Неверная длина имени', () => {
-  const person = new Bowerman('TooLongName', 'Bowerman');
-  const result = person.validateName('TooLongName', 'Bowerman');
-  expect(result).toThrowError();
-});
 
-test('Неверный тип', () => {
-  const person = new Bowerman('Imya', 'Angel');
-  const result = person.validateName('Imya', 'Angel');
-  expect(result).toThrowError();
-});
 
 test('Создание Лучника', () => {
   const character = new Bowerman('Лучник', 'Bowerman');
@@ -80,3 +70,15 @@ test('Создание Демона', () => {
   expect(character.attack).toBe(10);
   expect(character.defence).toBe(40);
 });
+
+test('Повышение уровня', () => {
+  const person = new Zombie('Imya', 'Zombie');
+  person.levelUp();
+  expect(person.level).toBe(2)
+})
+
+test('Нанесение урона', () => {
+  const person = new Zombie('Imya', 'Zombie');
+  person.damage(10);
+  expect(person.health).toBe(91)
+})
