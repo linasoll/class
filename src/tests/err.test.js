@@ -2,14 +2,6 @@
 
 import { Character } from "../class/characters";
 
-
-// test('Повышение уровня умершего', () => {
-//     const person = new Ch('Imya', 'Zombie');
-//     person.health = 0;
-//     person.levelUp();
-//     expect(person.level).toThrow(new Error('Нельзя повысить левел умершего'))
-//   })
-
 test('Неверный тип', () => {
     expect(() => new Character('Imya', 'Angel')).toThrow(new Error('Неверный тип персонажа'))
   });
@@ -25,7 +17,7 @@ test('Нанесение урона', () => {
   expect(() => person.damage(10)).toThrow(new Error('Нельзя убить умершего'))
 });
 
-test('Повышение уровня', () => {
+test('Повышение уровня умершего', () => {
     const person = new Character('Imya', 'Zombie');
     person.health = 0;
   expect(() => person.levelUp()).toThrow(new Error('Нельзя повысить левел умершего'))

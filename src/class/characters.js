@@ -26,7 +26,6 @@ export class Character {
         } else {
             throw new Error('Нельзя повысить левел умершего') 
         }
-       //return this
     }
 
     damage(points) {
@@ -35,7 +34,6 @@ export class Character {
         } else {
             throw new Error('Нельзя убить умершего')
         }
-        // return this
     }
 }
 
